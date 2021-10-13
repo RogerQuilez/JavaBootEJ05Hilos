@@ -13,7 +13,7 @@ public class Main {
 		
 		//Segundo Hilo
 		HiloPrime hiloPrime2 = new HiloPrime();
-		hiloPrime2.setNumber(2321);
+		hiloPrime2.setNumber(2);
 		Thread tPrime2 = new Thread(hiloPrime2);
 		
 		//Tercer Hilo

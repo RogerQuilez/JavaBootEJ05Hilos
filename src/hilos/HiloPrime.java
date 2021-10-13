@@ -10,8 +10,8 @@ public class HiloPrime implements Runnable {
 	private long number;
 
 	/**
-	 * Este método se encargará de arrancar el hilo y comprobar si el número que nos han pasado es primo o no.
-	 * Imprimirá el resultado de este por pantalla
+	 * Este método se encargará de arrancar el hilo y comprobar si el número que nos han pasado es primo o no e
+	 * imprimirá el resultado de este por pantalla
 	 */
 	@Override
 	public void run() {
@@ -28,9 +28,7 @@ public class HiloPrime implements Runnable {
 			//que ha tardado en realizar la comprobación
 			endTime = System.nanoTime();
 			
-			//TimeUnit nos permite pasar de nanosegundos a, en este caso, milisegundos
-			System.out.println("El número " + this.number + " es Primo, el proceso ha durado: "
-					+ TimeUnit.NANOSECONDS.toMillis(endTime - startTime) + " Milisegundos");
+			System.out.println(getMessage(startTime, endTime, "es Primo"));
 
 		} else {
 			//En esto punto ya ha realizado la comprobación de si el número es primo y debemos capturar
@@ -38,9 +36,7 @@ public class HiloPrime implements Runnable {
 			//que ha tardado en realizar la comprobación
 			endTime = System.nanoTime();
 			
-			//TimeUnit nos permite pasar de nanosegundos a, en este caso, milisegundos
-			System.out.println("El número " + this.number + " no es Primo, el proceso ha durado: "
-					+ TimeUnit.NANOSECONDS.toMillis(endTime - startTime) + " Milisegundos");
+			System.out.println(getMessage(startTime, endTime, "No es Primo"));
 		}
 	}
 
@@ -63,6 +59,20 @@ public class HiloPrime implements Runnable {
 		}
 		
 		return true;
+	}
+	
+	/**
+	 * Devuelve el resultado en milisegundos y indicando si el número es primo o no
+	 * @param startTime
+	 * @param endTime
+	 * @param message
+	 * @return
+	 */
+	public String getMessage(long startTime, long endTime, String message) {
+		
+		return "El número " + this.number + " " + message + ", el proceso ha durado: "
+				+ TimeUnit.NANOSECONDS.toMillis(endTime - startTime) + " Milisegundos";
+		
 	}
 
 	public long getNumber() {
