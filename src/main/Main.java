@@ -16,19 +16,13 @@ public class Main {
 		List<Long> listNumbers = getNumbers();
 		
 		//Primer Hilo
-		HiloPrime hiloPrime = new HiloPrime();
-		hiloPrime.setNumber(listNumbers.get(0));
-		Thread tPrime = new Thread(hiloPrime);
+		Thread tPrime = getThread(listNumbers.get(0));
 		
 		//Segundo Hilo
-		HiloPrime hiloPrime2 = new HiloPrime();
-		hiloPrime2.setNumber(listNumbers.get(1));
-		Thread tPrime2 = new Thread(hiloPrime2);
+		Thread tPrime2 = getThread(listNumbers.get(1));
 		
 		//Tercer Hilo
-		HiloPrime hiloPrime3 = new HiloPrime();
-		hiloPrime3.setNumber(listNumbers.get(2));
-		Thread tPrime3 = new Thread(hiloPrime3);
+		Thread tPrime3 = getThread(listNumbers.get(2));
 		
 		//Ejecutamos los hilos
 		tPrime.start();
@@ -52,5 +46,11 @@ public class Main {
 		} while(listNumbers.size() < 3);
 		
 		return listNumbers;
+	}
+	
+	private static Thread getThread(Long number) {
+		HiloPrime hiloPrime = new HiloPrime();
+		hiloPrime.setNumber(number);
+		return new Thread(hiloPrime);
 	}
 }
