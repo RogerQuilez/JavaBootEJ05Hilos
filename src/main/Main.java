@@ -48,6 +48,11 @@ public class Main {
 		return listNumbers;
 	}
 	
+	/**
+	 * 
+	 * @param number -> Número contenido en la lista de números ofrecidos por el cliente
+	 * @return -> Devuelve un hilo creado a partir del número que se le pasa por parámetro
+	 */
 	private static Thread getThread(Long number) {
 		HiloPrime hiloPrime = new HiloPrime();
 		hiloPrime.setNumber(number);
